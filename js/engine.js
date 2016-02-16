@@ -111,7 +111,7 @@ var Engine = (function(global) {
          */
 		 
         var rowImages = [
-                'images/meta2.png',   // Top row is water // Ahora es una meta :D
+                'images/meta3.png',   // Top row is water // Ahora es una meta :D
                 'images/stone-block.png',   // Row 1 of 3 of stone
                 'images/stone-block.png',   // Row 2 of 3 of stone
                 'images/stone-block.png',   // Row 3 of 3 of stone
@@ -125,7 +125,7 @@ var Engine = (function(global) {
 			if(player.cantG > 2){
 				rowImages[0] = 'images/meta.png';
 			}else{
-				rowImages[0] = 'images/meta2.png';
+				rowImages[0] = 'images/meta3.png';
 			}
 
         /* Loop through the number of rows and columns we've defined above
@@ -190,7 +190,8 @@ var Engine = (function(global) {
 		'images/Gem Blue.png',
 		'images/Gem Orange.png',
 		'images/Heart.png',
-		'images/meta2.png'
+		'images/meta2.png',
+		'images/meta3.png'
     ]);
     Resources.onReady(init);
 
