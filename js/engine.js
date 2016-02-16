@@ -112,9 +112,9 @@ var Engine = (function(global) {
 		 
         var rowImages = [
                 'images/meta3.png',   // Top row is water // Ahora es una meta :D
-                'images/stone-block.png',   // Row 1 of 3 of stone
-                'images/stone-block.png',   // Row 2 of 3 of stone
-                'images/stone-block.png',   // Row 3 of 3 of stone
+                'images/calle1.png',   // Row 1 of 3 of stone
+                'images/calle2.png',   // Row 2 of 3 of stone
+                'images/calle3.png',   // Row 3 of 3 of stone
                 'images/grass-block.png',   // Row 1 of 2 of grass
                 'images/grass-block.png'    // Row 2 of 2 of grass
             ],
@@ -198,7 +198,10 @@ var Engine = (function(global) {
 		'images/carro8.png',
 		'images/carro9.png',
 		'images/carro10.png',
-		'images/enemy-bug.png'
+		'images/enemy-bug.png',
+		'images/calle1.png',
+		'images/calle2.png',
+		'images/calle3.png'
     ]);
     Resources.onReady(init);
 
