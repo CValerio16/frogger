@@ -2,7 +2,9 @@ var MOV_X = 101;
 var MOV_Y = 83;
 var posiciones_y = [63,71*2,75*3];
 var posiciones_x = [MOV_X,MOV_X*2,MOV_X*3];
-var gemas = ['images/Gem Blue.png','images/Gem Orange.png','images/Gem Green.png'];
+var gemas = ['images/Gem Blue.png','images/Gem Orange.png','images/Gem Green.png']; 
+var autos = ['images/carro6.png','images/carro8.png','images/carro3.png','images/carro4.png','images/carro10.png'
+            ,'images/carro1.png','images/carro7.png','images/carro2.png','images/carro9.png','images/carro5.png'];
 
 var generarNumero = function(){
 	
@@ -17,18 +19,24 @@ var generarNumero = function(){
 	} 
 }
 
+var generarNumero2 = function(){
+	var numero = Math.floor(Math.random()*9);
+	console.log(numero);
+	return numero;
+}
+
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(x, y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-	this.x = 0;
-	this.y = 20;
+	this.x = x;
+	this.y = y;
 	this.ancho = 50;
 	this.alto = 85;
 	this.velocidad = generarNumero();
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
+    this.sprite = autos[generarNumero2()];
 };
 
 // Update the enemy's position, required method for game
@@ -42,6 +50,7 @@ Enemy.prototype.update = function(dt) {
 		this.x = 0;
 		this.y = posiciones_y[generarNumero()-1];
 		this.velocidad = generarNumero();
+		this.sprite = autos[generarNumero2()];
 	}
 };
 
@@ -68,8 +77,15 @@ Gema.prototype.render = function(){
 };
 
 Gema.prototype.reiniciar = function(){
-	this.x = posiciones_x[generarNumero()-1];
-	this.y = posiciones_y[generarNumero()-1];
+	var xx = this.x;
+	var yy = this.y;
+	
+	// Para que no salga la gema en la misma posicion que estaba
+	while(xx === this.x && yy === this.y){ 
+		this.x = posiciones_x[generarNumero()-1];
+		this.y = posiciones_y[generarNumero()-1];
+	}
+	
 	this.solido = true;
 	this.sprite = gemas[generarNumero()-1];
 };
@@ -199,15 +215,9 @@ Player.prototype.dibujarPuntaje = function(){
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var allEnemies = [new Enemy(), 
-				  new Enemy(), 
-				  new Enemy()];
-allEnemies[0].x = posiciones_x[0];
-allEnemies[0].y = posiciones_y[0];
-allEnemies[1].x = posiciones_x[1];
-allEnemies[1].y = posiciones_y[1];
-allEnemies[2].x = posiciones_x[2];
-allEnemies[2].y = posiciones_y[2];
+var allEnemies = [new Enemy(posiciones_x[0], posiciones_y[0]), 
+				  new Enemy(posiciones_x[1], posiciones_y[1]), 
+				  new Enemy(posiciones_x[2], posiciones_y[2])];
 			  
 var player = new Player();
 
